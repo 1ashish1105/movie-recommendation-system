@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Movie Recommender</title>
+
+    <!-- Simple styling -->
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #0f172a;
+            color: white;
+            text-align: center;
+            padding: 40px;
+        }
+
+        h1 {
+            color: #38bdf8;
+        }
+
+        form {
+            margin: 20px;
+        }
+
+        select, button {
+            padding: 10px;
+            font-size: 16px;
+            margin: 10px;
+            border-radius: 8px;
+            border: none;
+        }
+
+        button {
+            background-color: #38bdf8;
+            color: black;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0ea5e9;
+        }
+
+        .results {
+            margin-top: 30px;
+        }
+
+        .movie {
+            background-color: #1e293b;
+            margin: 10px auto;
+            padding: 10px;
+            width: 300px;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>🎬 Movie Recommendation System</h1>
+
+    <form method="POST">
+        <select name="movie">
+            {% for movie in movie_list %}
+                <option value="{{ movie }}">{{ movie }}</option>
+            {% endfor %}
+        </select>
+
+        <br>
+
+        <button type="submit">Recommend</button>
+    </form>
+
+    {% if recommended %}
+    <div class="results">
+        <h2>Recommended Movies:</h2>
+
+        {% for m in recommended %}
+            <div class="movie">
+                {{ m }}
+            </div>
+        {% endfor %}
+    </div>
+    {% endif %}
+
+</body>
+</html>
